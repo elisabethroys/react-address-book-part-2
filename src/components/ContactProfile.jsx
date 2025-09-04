@@ -1,14 +1,35 @@
 import { useState, useEffect, useContext } from 'react'
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 
 import { ContactContext } from "../App"
 
 function ContactProfile (){
 
-    const { contacts } = useContext(ContactContext);
+    const { contacts, contact_api } = useContext(ContactContext);
+    const navigate = useNavigate();
 
     const { id } = useParams();
     const [contact, setContact] = useState(null);
+
+    const handleClick = async () => {
+
+        try {
+            // Do something
+            const response = await fetch(`${contact_api}/${contact.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                navigate("/");
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     useEffect(() => {
         const clickedContact = contacts.find(c => String(c.id) === String(id));
@@ -30,6 +51,7 @@ function ContactProfile (){
                     <h2 className="not-bold"><strong>Name:</strong> {contact.firstName} {contact.lastName}</h2>
                     <p><strong>Street:</strong> {contact.street}</p>
                     <p><strong>City:</strong> {contact.city}</p>
+                    <button onClick={handleClick}>Delete contact</button>
                 </>
             ) : (
                 <p>Not available</p>
