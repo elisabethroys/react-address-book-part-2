@@ -52,8 +52,27 @@ function ContactProfile (){
             {contact ? (
                 <>
                     <h2 className="not-bold"><strong>Name:</strong> {contact.firstName} {contact.lastName}</h2>
+                    <img src={contact.profileImage}/>
+                    <p><strong>Gender:</strong> {contact.gender}</p>
+                    <p><strong>Email:</strong> {contact.email}</p>
+                    <p><strong>Job title:</strong> {contact.jobTitle}</p>
                     <p><strong>Street:</strong> {contact.street}</p>
                     <p><strong>City:</strong> {contact.city}</p>
+                    <p><strong>Latitude:</strong> {contact.latitude}</p>
+                    <p><strong>Longitude:</strong> {contact.longitude}</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '10px' }}>
+                    <strong>Favorite colour:</strong>
+                    <div
+                        style={{
+                            width: '20px',
+                            height: '20px',
+                            backgroundColor: contact.favouriteColour,
+                            border: '1px solid #000',
+                            borderRadius: '4px'
+                        }}
+                    />
+                    </div>
+                    <br></br>
                     <button onClick={editContact}>Edit contact</button>
                     <button onClick={deleteContact}>Delete contact</button>
                 </>
