@@ -9,11 +9,14 @@ function Dashboard () {
     return (
         <>
             <h1>Dashboard</h1>
+            <nav>
+                <Link to="/create-contact">Create a contact</Link>
+            </nav>
             <h2>Contacts</h2>
             <ul>
                 {contacts.map((contact, index) => (
                     <li key={index}>
-                        <Link to={`/view/${contact.id}`}>
+                        <Link to={`/profile/${contact.id}`}>
                             <h3>
                                 {contact.firstName} {contact.lastName}
                             </h3>

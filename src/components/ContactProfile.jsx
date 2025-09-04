@@ -24,7 +24,7 @@ function ContactProfile (){
             <h1>Contact Profile</h1>
             {contact ? (
                 <>
-                    <h2 className="NotBold"><strong>Name:</strong> {contact.firstName} {contact.lastName}</h2>
+                    <h2 className="not-bold"><strong>Name:</strong> {contact.firstName} {contact.lastName}</h2>
                     <p><strong>Street:</strong> {contact.street}</p>
                     <p><strong>City:</strong> {contact.city}</p>
                 </>
