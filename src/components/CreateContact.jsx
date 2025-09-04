@@ -1,27 +1,56 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useContext } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+
+import { ContactContext } from "../App"
 
 function CreateContact(){
 
+    const {contact_api} = useContext(ContactContext);
     const navigate = useNavigate();
 
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setlastName] = useState(null);
-    const [street, setStreet] = useState(null);
-    const [city, setCity] = useState(null);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setlastName] = useState('');
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
 
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        const newContact = {
+            firstName,
+            lastName,
+            street,
+            city
+        };
 
-        navigate("/");
+        if(firstName !== '' && lastName !== ''){
+            try {
+                const response = await fetch(contact_api, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newContact)
+                });
+
+                if (response.ok) {
+                    navigate("/");
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
     };
-
-
 
     return (
         <>
             <h1>Create Contact</h1>
+            <nav>
+                <Link to="/">Dashboard</Link>
+            </nav>
+            <br></br>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Firstname: </label>

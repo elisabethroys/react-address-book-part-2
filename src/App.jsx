@@ -23,11 +23,11 @@ function App() {
         }
 
         fetchContacts();
-    }, []);
+    }, [contacts]);
 
     return (
         <main>
-            <ContactContext.Provider value={{contacts}}>
+            <ContactContext.Provider value={{contacts, contact_api}}>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/profile/:id" element={<ContactProfile />}/>

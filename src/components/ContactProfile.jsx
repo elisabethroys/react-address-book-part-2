@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 import { ContactContext } from "../App"
 
@@ -22,6 +22,9 @@ function ContactProfile (){
     return (
         <>
             <h1>Contact Profile</h1>
+            <nav>
+                <Link to="/">Dashboard</Link>
+            </nav>
             {contact ? (
                 <>
                     <h2 className="not-bold"><strong>Name:</strong> {contact.firstName} {contact.lastName}</h2>
