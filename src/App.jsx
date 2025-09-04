@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import Dashboard from './components/Dashboard';
 import './App.css';
+import ContactProfile from './components/ContactProfile';
 
 export const ContactContext = createContext();
 
@@ -28,6 +29,7 @@ function App() {
             <ContactContext.Provider value={{contacts}}>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
+                    <Route path="/view/:id" element={<ContactProfile />}/>
                 </Routes>
             </ContactContext.Provider>
         </main>

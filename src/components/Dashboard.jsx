@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { ContactContext } from "../../App"
+import { Link } from 'react-router-dom'
+import { ContactContext } from "../App"
 
 function Dashboard () {
 
@@ -12,9 +13,11 @@ function Dashboard () {
             <ul>
                 {contacts.map((contact, index) => (
                     <li key={index}>
-                        <h3>
-                            {contact.firstName} {contact.lastName}
-                        </h3>
+                        <Link to={`/view/${contact.id}`}>
+                            <h3>
+                                {contact.firstName} {contact.lastName}
+                            </h3>
+                        </Link>
                     </li>
                         
                 ))}
