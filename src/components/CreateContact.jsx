@@ -25,10 +25,6 @@ function CreateContact(){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log("Check:", contact.latitude, contact.longitude);
-
-        console.log("Sending contact data:", contact);
-
         if(contact.firstName !== '' && contact.lastName !== ''){
             try {
                 const response = await fetch(contact_api, {
