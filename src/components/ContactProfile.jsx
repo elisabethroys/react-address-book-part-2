@@ -11,10 +11,13 @@ function ContactProfile (){
     const { id } = useParams();
     const [contact, setContact] = useState(null);
 
-    const handleClick = async () => {
+    const editContact = async () => {
+        navigate(`/profile/${contact.id}/edit`)
+    };
+
+    const deleteContact = async () => {
 
         try {
-            // Do something
             const response = await fetch(`${contact_api}/${contact.id}`, {
                 method: 'DELETE',
                 headers: {
@@ -51,7 +54,8 @@ function ContactProfile (){
                     <h2 className="not-bold"><strong>Name:</strong> {contact.firstName} {contact.lastName}</h2>
                     <p><strong>Street:</strong> {contact.street}</p>
                     <p><strong>City:</strong> {contact.city}</p>
-                    <button onClick={handleClick}>Delete contact</button>
+                    <button onClick={editContact}>Edit contact</button>
+                    <button onClick={deleteContact}>Delete contact</button>
                 </>
             ) : (
                 <p>Not available</p>

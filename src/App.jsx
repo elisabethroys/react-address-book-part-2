@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import './App.css';
 import ContactProfile from './components/ContactProfile';
 import CreateContact from './components/CreateContact';
+import UpdateContact from './components/UpdateContact';
 
 export const ContactContext = createContext();
 
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/profile/:id" element={<ContactProfile />}/>
                     <Route path="/create-contact" element={<CreateContact />}/>
+                    <Route path="/profile/:id/edit" element={<UpdateContact />}/>
                 </Routes>
             </ContactContext.Provider>
         </main>
